@@ -1,12 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import ApodCard from "./ApodCard";
 import "./App.css";
+import EpicCard from "./EpicCard";
 
 function App() {
   return (
-    <div className="flex flex-col h-screen items-center justify-center">
-      <p>app</p>
+    <div 
+      className="flex flex-col lg:flex-row">
+      <EpicCard />
+      <ApodCard />
     </div>
   );
 }
