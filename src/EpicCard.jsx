@@ -4,7 +4,7 @@ export default function EpicCard() {
   return (
     <div className="hero lg:min-h-screen min-h-[50vh] overflow-hidden">
       <div
-        className="hero lg:min-h-screen min-h-[50vh] hover:scale-[1.04] transition duration-1000"
+        className="hero lg:min-h-screen min-h-[50vh] hover:scale-[1.02] transition duration-1000"
         style={{
           backgroundImage: `url(${bgImg})`,
         }}
@@ -23,7 +23,5 @@ export default function EpicCard() {
         </div>
       </div>
     </div>
-
-    
   );
 }
