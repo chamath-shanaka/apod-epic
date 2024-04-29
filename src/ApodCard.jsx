@@ -1,8 +1,14 @@
 import bgImg from "./assets/M57Ring_HubbleGendler_3000.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function ApodCard() {
+  const navigate = useNavigate();
+
   return (
-    <div className="hero lg:min-h-screen min-h-[50vh] overflow-hidden">
+    <div
+      className="hero lg:min-h-screen min-h-[50vh] overflow-hidden"
+      onClick={() => navigate("/epic")}
+    >
       <div
         className="hero lg:min-h-screen min-h-[50vh] hover:scale-[1.02] transition duration-1000"
         style={{

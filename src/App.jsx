@@ -1,14 +1,16 @@
-import ApodCard from "./ApodCard";
 import "./App.css";
-import EpicCard from "./EpicCard";
+import Apod from "./Apod";
+import Epic from "./Epic";
+import Home from "./Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div 
-      className="flex flex-col lg:flex-row">
-      <EpicCard />
-      <ApodCard />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Epic" element={<Epic />} />
+        <Route path="/Apod" element={<Apod />} />
+      </Routes>
   );
 }
 
