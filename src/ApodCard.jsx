@@ -7,7 +7,7 @@ export default function ApodCard() {
   return (
     <div
       className="hero lg:min-h-screen min-h-[50vh] overflow-hidden"
-      onClick={() => navigate("/epic")}
+      onClick={() => navigate("/apod")}
     >
       <div
         className="hero lg:min-h-screen min-h-[50vh] hover:scale-[1.02] transition duration-1000"
