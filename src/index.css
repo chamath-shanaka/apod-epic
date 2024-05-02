@@ -9,4 +9,6 @@ body {
   font-family: "Palanquin", Arial, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  min-height: 100vh;
 }
