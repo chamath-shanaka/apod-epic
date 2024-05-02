@@ -14,7 +14,7 @@ export default function Apod() {
         <Navbar title={"APOD"} />
       </div>
 
-      <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
+      <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse justify-center py-4">
         <ApodImageCard />
         <ApodImgInfoCard />
       </div>

@@ -6,8 +6,12 @@ export default function ApodImgInfoCard() {
   const [date, setDate] = useState(new Date());
 
   return (
-    <div className="h-max w-[90vw] xl:w-[25vw] rounded-md border-solid border-[1px] border-neutral-700">
-      <div className="card-body font-mono font-medium">
+    <div className="h-max w-[90vw] xl:w-[25vw]">
+      <br />
+      <br />
+      <h2 className="card-title">Card title!</h2>
+
+      <div className="card-body font-medium text-lg text-neutral-300">
         <CustomProvider theme="dark">
           <DatePicker
             oneTap
@@ -20,19 +24,17 @@ export default function ApodImgInfoCard() {
 
         <p className="leading-relaxed">
           <br />
-          caption: <br />
-          <br />
-          centroid coordinates: <br />
-          <br />
-          DSCOVR j2000 position: 150,000,000 km <br />
-          <br />
-          lunar_j2000_position: <br />
-          <br />
-          sun_j2000_position: <br />
-          <br />
-          attitude_quaternions: <br />
-          <br />
-          coords
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, ad.
+          Amet dolor perferendis incidunt! Maiores sunt praesentium fugit
+          recusandae vero facere reprehenderit eos molestiae ipsam blanditiis a
+          excepturi, laborum quam. Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Laborum, ad. Amet dolor perferendis incidunt!
+          Maiores sunt praesentium fugit recusandae vero facere reprehenderit
+          eos molestiae ipsam blanditiis a excepturi, laborum quam. <br />
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, ad.
+          Amet dolor perferendis incidunt! Maiores sunt praesentium fugit
+          recusandae vero facere reprehenderit eos molestiae ipsam blanditiis a
+          excepturi, laborum quam.
         </p>
       </div>
     </div>
