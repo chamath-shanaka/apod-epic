@@ -1,4 +1,6 @@
 import Navbar from "../Navbar";
+import EpicImageCard from "./EpicImageCard";
+import EpicImgInfoCard from "./EpicImgInfoCard";
 
 export default function Epic() {
   return (
@@ -12,8 +14,9 @@ export default function Epic() {
         <Navbar title={"EPIC"} />
       </div>
 
-      <div>
-        <p>Hello form EPIC</p>
+      <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
+        <EpicImageCard />
+        <EpicImgInfoCard />
       </div>
     </>
   );
