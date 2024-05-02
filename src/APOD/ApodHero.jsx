@@ -1,7 +1,7 @@
-import bgImg from "./assets/M57Ring_HubbleGendler_3000.jpg";
+import bgImg from "../assets/M57Ring_HubbleGendler_3000.jpg";
 import { useNavigate } from "react-router-dom";
 
-export default function ApodCard() {
+export default function ApodHero() {
   const navigate = useNavigate();
 
   return (

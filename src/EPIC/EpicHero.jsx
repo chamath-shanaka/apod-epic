@@ -1,7 +1,7 @@
-import bgImg from "./assets/earth-space-view-canada-0155150d68fb392562e320dd07b92781.jpg";
+import bgImg from "../assets/earth-space-view-canada-0155150d68fb392562e320dd07b92781.jpg";
 import { useNavigate } from "react-router-dom";
 
-export default function EpicCard() {
+export default function EpicHero() {
   const navigate = useNavigate();
 
   return (

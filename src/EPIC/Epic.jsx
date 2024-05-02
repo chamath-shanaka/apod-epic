@@ -1,19 +1,19 @@
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
-export default function Apod() {
+export default function Epic() {
   return (
     <>
       {/* desktop nav */}
       <div className="hidden sm:block">
-        <Navbar title={"Astronomy Picture of the Day"} />
+        <Navbar title={"DSCOVR's Earth Polychromatic Imaging Camera"} />
       </div>
       {/* mobile nav */}
       <div className="sm:hidden">
-        <Navbar title={"APOD"} />
+        <Navbar title={"EPIC"} />
       </div>
 
       <div>
-        <p>Hello form APOD</p>
+        <p>Hello form EPIC</p>
       </div>
     </>
   );

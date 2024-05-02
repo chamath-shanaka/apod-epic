@@ -1,6 +1,6 @@
 import "./App.css";
-import Apod from "./Apod";
-import Epic from "./Epic";
+import Apod from "./APOD/Apod";
+import Epic from "./EPIC/Epic";
 import Home from "./Home";
 import { Route, Routes } from "react-router-dom";
 
