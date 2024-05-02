@@ -1,4 +1,6 @@
 import Navbar from "../Navbar";
+import ApodImageCard from "./ApodImageCard";
+import ApodImgInfoCard from "./ApodImgInfoCard";
 
 export default function Apod() {
   return (
@@ -12,8 +14,9 @@ export default function Apod() {
         <Navbar title={"APOD"} />
       </div>
 
-      <div>
-        <p>Hello form APOD</p>
+      <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
+        <ApodImageCard />
+        <ApodImgInfoCard />
       </div>
     </>
   );

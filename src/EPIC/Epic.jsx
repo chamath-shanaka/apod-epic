@@ -2,6 +2,12 @@ import Navbar from "../Navbar";
 import EpicImageCard from "./EpicImageCard";
 import EpicImgInfoCard from "./EpicImgInfoCard";
 
+async function getData() {
+  const response = await fetch('https://epic.gsfc.nasa.gov/api/enhanced/date/2015-10-31');
+  const data = await response.json();
+  console.log(data);
+}
+
 export default function Epic() {
   return (
     <>

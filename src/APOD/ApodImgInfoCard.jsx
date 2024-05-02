@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DatePicker, CustomProvider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
-export default function EpicImgInfoCard() {
+export default function ApodImgInfoCard() {
   const [date, setDate] = useState(new Date());
 
   return (
