@@ -7,6 +7,7 @@ const apiKey = import.meta.env.VITE_NASA_API_KEY;
 export default function Apod() {
   const [date, setDate] = useState(new Date());
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   function changDate(newDate) {
     setDate(newDate);
@@ -15,18 +16,33 @@ export default function Apod() {
   // API call and data handling logic
   async function fetchData(date) {
     try {
-      setData(null); // for main loading animation to trigger
+      // for main loading animation to trigger
+      setData(null);
+      setError(null);
+
       const response = await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${
           date.toISOString().split("T")[0]
         }`
       );
 
-      // track rate limits
-      console.log('Remaining: ', response.headers.get('X-RateLimit-Remaining'));
+      if (response.ok) {
+        // track rate limits
+        console.log(
+          "Remaining: ",
+          response.headers.get("X-RateLimit-Remaining")
+        );
 
-      // parse and set data
-      setData(await response.json());
+        // parse and set data
+        setData(await response.json());
+      } else {
+        // parse error data
+        setError(await response.json());
+        setError((error) => {
+          console.error(error.code, error.msg);
+          return error;
+        });
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -36,6 +52,13 @@ export default function Apod() {
   useEffect(() => {
     fetchData(date);
   }, [date]);
+
+  // trigger error modal
+  useEffect(() => {
+    if (error) {
+      document.getElementById("error_modal").showModal();
+    }
+  }, [error]);
 
   return (
     <>
@@ -48,11 +71,35 @@ export default function Apod() {
         <Navbar title={"APOD"} />
       </div>
 
-      {!data && (
+      {/* main loader */}
+      {!data && !error && (
         <div className="min-h-full min-w-full flex absolute top-0 justify-center items-center">
           <span className="loader"></span>
         </div>
       )}
+
+      {/* error modal */}
+      {error && (
+        <dialog id="error_modal" className="modal text-warning">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Error: {error.code}</h3>
+            <p className="py-4">{error.msg}</p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button
+                  className="btn btn-outline btn-warning"
+                  // date change will trigger fetchData(date)
+                  onClick={() => setDate(new Date())}
+                >
+                  OK
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      )}
+
+      {/* main components */}
       {data && (
         <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse justify-center py-4">
           <ApodImageCard url={data.url} />
