@@ -64,6 +64,7 @@ export default function Epic() {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
+      setMetaData(null);
       fetchMetaData(date);
     }
   }, [date]);
