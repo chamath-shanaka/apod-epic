@@ -48,6 +48,14 @@ export default function Epic() {
         `https://api.nasa.gov/EPIC/api/natural/date/${date}?api_key=${apiKey}`
       );
       setMetaData(await response.json());
+      
+      if (response.ok) {
+        // track rate limits
+        console.log(
+          "Remaining: ",
+          response.headers.get("X-RateLimit-Remaining")
+        );
+      }
     } catch (error) {
       console.error("error fetching recent metaData: ", error);
     }
