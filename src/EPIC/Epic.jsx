@@ -92,6 +92,14 @@ export default function Epic() {
         <Navbar title={"EPIC"} />
       </div>
 
+      {/* main loader */}
+      {!metaData &&  (
+        <div className="min-h-full min-w-full flex absolute top-0 justify-center items-center">
+          <span className="loader"></span>
+        </div>
+      )}
+
+      {/* main components */}
       {metaData && (
         <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
           <EpicImageCard />
