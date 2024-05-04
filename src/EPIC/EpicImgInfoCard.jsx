@@ -14,7 +14,7 @@ export default function EpicImgInfoCard({
   }
 
   return (
-    <div className="h-max w-[90vw] xl:w-[25vw] rounded-md border-solid border-[1px] border-neutral-700">
+    <div className="h-max w-[90vw] xl:w-[25vw]">
       <div className="card-body font-mono font-medium text-neutral-300">
         <p className="leading-relaxed">
           <br />
