@@ -23,13 +23,13 @@ export default function Epic() {
       const response = await fetch(
         `https://api.nasa.gov/EPIC/api/natural/all?api_key=${apiKey}`
       );
-  
+
       // response [] of {"date": "2024-05-01"}
       const data = await response.json();
       const dateList = data.map((obj) => obj.date);
-  
+
       setAvailableDates(dateList);
-  
+
       if (dateList.length > 0) {
         // date change will trigger fetchMetaData in useEffect
         setDate(dateList[0]);
@@ -92,10 +92,16 @@ export default function Epic() {
         <Navbar title={"EPIC"} />
       </div>
 
-      <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
-        <EpicImageCard />
-        <EpicImgInfoCard />
-      </div>
+      {metaData && (
+        <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse grid-rows-2 justify-center items-center py-4">
+          <EpicImageCard />
+          <EpicImgInfoCard
+            availableDates={availableDates}
+            date={date}
+            metaData={metaData}
+          />
+        </div>
+      )}
     </>
   );
 }
