@@ -10,7 +10,7 @@ export default function ApodImgInfoCard({ date, explanation, title, changDate })
       <br />
       <h2 className="card-title">{title}</h2>
 
-      <div className="card-body font-medium text-lg text-neutral-300">
+      <div className="card-body font-medium text-[17px] text-neutral-300">
         <CustomProvider theme="dark">
           <DatePicker
             oneTap
