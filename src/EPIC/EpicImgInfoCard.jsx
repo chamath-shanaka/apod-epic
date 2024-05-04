@@ -15,7 +15,7 @@ export default function EpicImgInfoCard({
 
   return (
     <div className="h-max w-[90vw] xl:w-[25vw]">
-      <div className="card-body font-mono font-medium text-neutral-300">
+      <div className="card-body font-medium text-neutral-300">
         <p className="leading-relaxed">
           <br />
           Images taken by NASA's EPIC camera onboard the NOAA DSCOVR spacecraft,
@@ -31,7 +31,6 @@ export default function EpicImgInfoCard({
         <select
           className="select select-ghost w-full max-w-xs"
           value={date}
-          defaultValue={date}
           onChange={(e) => changDate(e.target.value)}
         >
           {availableDates.map((element) => (
@@ -53,7 +52,7 @@ export default function EpicImgInfoCard({
           longitude: {metaData[0].centroid_coordinates.lon}
           <br />
           <br />
-          DSCOVR J2000 position <br />
+          DSCOVR's J2000 position <br />
           x: {metaData[0].dscovr_j2000_position.x}
           <br />
           y: {metaData[0].dscovr_j2000_position.y}

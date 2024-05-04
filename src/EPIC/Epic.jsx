@@ -102,8 +102,8 @@ export default function Epic() {
 
       {/* main components */}
       {metaData && (
-        <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse justify-center items-center py-4">
-          <EpicImageCard />
+        <div className="grid gap-4 xl:flex xl:grid-cols-2 xl:flex-row-reverse justify-center py-4">
+          <EpicImageCard date={date} image={metaData[0].image} />
           <EpicImgInfoCard
             availableDates={availableDates}
             date={date}
