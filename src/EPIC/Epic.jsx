@@ -2,13 +2,16 @@ import { useEffect, useState, useRef } from "react";
 import Navbar from "../Navbar";
 import EpicImageCard from "./EpicImageCard";
 import EpicImgInfoCard from "./EpicImgInfoCard";
+import { useNavigate } from "react-router-dom";
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
 
 export default function Epic() {
   const [date, setDate] = useState(""); // YYYY-MM-DD
   const [availableDates, setAvailableDates] = useState([]);
   const [metaData, setMetaData] = useState(null);
+  const [errorInfo, setErrorInfo] = useState(null);
   const isInitialMount = useRef(true);
+  const navigate = useNavigate();
 
   function changDate(newDate) {
     // will trigger fetchMetaData in useEffect
@@ -36,6 +39,7 @@ export default function Epic() {
       }
     } catch (error) {
       console.error("Error fetching available dates: ", error);
+      setErrorInfo(error.message);
     }
   }
 
@@ -50,6 +54,7 @@ export default function Epic() {
       setMetaData(await response.json());
     } catch (error) {
       console.error("error fetching recent metaData: ", error);
+      setErrorInfo(error.message);
     }
   }
 
@@ -69,6 +74,13 @@ export default function Epic() {
     }
   }, [date]);
 
+  // trigger error modal
+  useEffect(() => {
+    if (errorInfo) {
+      document.getElementById("epic_error_modal").showModal();
+    }
+  }, [errorInfo]);
+
   return (
     <>
       {/* desktop nav */}
@@ -81,10 +93,38 @@ export default function Epic() {
       </div>
 
       {/* main loader */}
-      {!metaData &&  (
+      {!metaData && (
         <div className="min-h-full min-w-full flex absolute top-0 justify-center items-center">
           <span className="loader"></span>
         </div>
+      )}
+
+      {/* error modal */}
+      {errorInfo && (
+        <dialog id="epic_error_modal" className="modal text-error">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Error!</h3>
+            <p className="py-4">{errorInfo}</p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button
+                  className="btn btn-outline btn-error"
+                  // date change will trigger fetchData(date)
+                  onClick={() => location.reload()}
+                >
+                  Reload
+                </button>
+                <button
+                  className="btn btn-outline btn-accent ml-3"
+                  // date change will trigger fetchData(date)
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       )}
 
       {/* main components */}
