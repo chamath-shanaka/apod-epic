@@ -48,14 +48,6 @@ export default function Epic() {
         `https://api.nasa.gov/EPIC/api/natural/date/${date}?api_key=${apiKey}`
       );
       setMetaData(await response.json());
-      
-      if (response.ok) {
-        // track rate limits
-        console.log(
-          "Remaining: ",
-          response.headers.get("X-RateLimit-Remaining")
-        );
-      }
     } catch (error) {
       console.error("error fetching recent metaData: ", error);
     }
@@ -76,19 +68,6 @@ export default function Epic() {
       fetchMetaData(date);
     }
   }, [date]);
-
-  // output metaData [temp] [testing]
-  useEffect(() => {
-    if (metaData !== null) {
-      if (!metaData.length) {
-        console.log("No data for this date");
-      } else {
-        console.log("Data: ", metaData);
-        console.log("Date: ", date);
-        console.log("dates: ", availableDates);
-      }
-    }
-  }, [metaData]);
 
   return (
     <>
