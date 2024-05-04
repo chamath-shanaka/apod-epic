@@ -15,17 +15,25 @@ export default function EpicImgInfoCard({
 
   return (
     <div className="h-max w-[90vw] xl:w-[25vw] rounded-md border-solid border-[1px] border-neutral-700">
-      <div className="card-body font-mono font-medium">
+      <div className="card-body font-mono font-medium text-neutral-300">
+        <p className="leading-relaxed">
+          <br />
+          Images taken by NASA's EPIC camera onboard the NOAA DSCOVR spacecraft,
+          <br />
+          situated at the Earth-Sun Lagrange point
+          <br />
+          <br />
+          <br />
+          <br />
+        </p>
+
         {/* Date selection */}
         <select
           className="select select-ghost w-full max-w-xs"
           value={date}
+          defaultValue={date}
           onChange={(e) => changDate(e.target.value)}
         >
-          <option disabled selected>
-            {date}
-          </option>
-          {/* list available dates */}
           {availableDates.map((element) => (
             <option key={element} value={element}>
               {element}
@@ -35,14 +43,7 @@ export default function EpicImgInfoCard({
 
         <p className="leading-relaxed">
           <br />
-          Images taken by NASA's EPIC camera onboard the NOAA DSCOVR spacecraft,
-          <br />
-          situated at the Earth-Sun Lagrange point
-          <br />
-          <br />
-          Distance form Earth: {calDistance(
-            metaData[0].dscovr_j2000_position
-          )}{" "}
+          Distance form Earth: {calDistance(metaData[0].dscovr_j2000_position)}{" "}
           km
           <br />
           <br />

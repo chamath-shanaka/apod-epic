@@ -107,6 +107,7 @@ export default function Epic() {
             availableDates={availableDates}
             date={date}
             metaData={metaData}
+            changDate={changDate}
           />
         </div>
       )}
