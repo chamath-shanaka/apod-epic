@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <KindeProvider
       clientId={kindeClientId}
       domain="https://apodepic.kinde.com"
-      redirectUri="http://localhost:5173"
-      logoutUri="http://localhost:5173"
+      redirectUri="https://master--apod-epic.netlify.app/"
+      logoutUri="https://master--apod-epic.netlify.app/"
     >
       <BrowserRouter>
         <App />
