@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import ApodImageCard from "./ApodImageCard";
 import ApodImgInfoCard from "./ApodImgInfoCard";
+import { useNavigate } from "react-router-dom";
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
 
 export default function Apod() {
   const [date, setDate] = useState(new Date());
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [generalError, setGeneralError] = useState(null);
+  const navigate = useNavigate();
 
   function changDate(newDate) {
     setDate(newDate);
@@ -19,6 +22,7 @@ export default function Apod() {
       // for main loading animation to trigger
       setData(null);
       setError(null);
+      setGeneralError(null);
 
       const response = await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${
@@ -44,6 +48,7 @@ export default function Apod() {
         });
       }
     } catch (error) {
+      setGeneralError(error);
       console.error("Error fetching data:", error);
     }
   }
@@ -58,7 +63,10 @@ export default function Apod() {
     if (error) {
       document.getElementById("error_modal").showModal();
     }
-  }, [error]);
+    if (!error && generalError) {
+      document.getElementById("general_error_modal").showModal();
+    }
+  }, [error, generalError]);
 
   return (
     <>
@@ -72,7 +80,7 @@ export default function Apod() {
       </div>
 
       {/* main loader */}
-      {!data && !error && (
+      {!data && !error && !generalError && (
         <div className="min-h-full min-w-full flex absolute top-0 justify-center items-center">
           <span className="loader"></span>
         </div>
@@ -92,6 +100,40 @@ export default function Apod() {
                   onClick={() => setDate(new Date())}
                 >
                   OK
+                </button>
+                <button
+                  className="btn btn-outline btn-accent ml-3"
+                  // date change will trigger fetchData(date)
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      )}
+
+      {/* general error modal */}
+      {!error && generalError && (
+        <dialog id="general_error_modal" className="modal text-error">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Error!</h3>
+            <p className="py-4">{generalError.message}</p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button
+                  className="btn btn-outline btn-error"
+                  onClick={() => location.reload()}
+                >
+                  Reload
+                </button>
+                <button
+                  className="btn btn-outline btn-accent ml-3"
+                  // date change will trigger fetchData(date)
+                  onClick={() => navigate("/")}
+                >
+                  Home
                 </button>
               </form>
             </div>

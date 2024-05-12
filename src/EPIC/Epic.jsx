@@ -116,7 +116,6 @@ export default function Epic() {
                 </button>
                 <button
                   className="btn btn-outline btn-accent ml-3"
-                  // date change will trigger fetchData(date)
                   onClick={() => navigate("/")}
                 >
                   Home
