@@ -97,7 +97,7 @@ export default function Apod() {
                 <button
                   className="btn btn-outline btn-warning"
                   // date change will trigger fetchData(date)
-                  onClick={() => setDate(new Date())}
+                  onClick={() => setDate(new Date(2024, 4, 1))}
                 >
                   OK
                 </button>
